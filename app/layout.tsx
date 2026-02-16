@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     "full-stack developer",
     "Next.js",
     "React",
+    "saad"
   ],
 };
 

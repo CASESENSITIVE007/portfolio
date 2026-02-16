@@ -6,7 +6,7 @@ export default function Experience() {
       link: "https://theoriginaltraders.com/",
       period: "July 18, 2025 – Aug 31, 2025",
       points: [
-        "Collaborated with a team to build a responsive website for a client involved in exporting bearings, lubricants, and other industrial products from India.",
+        "Developed a responsive website for a client involved in exporting bearings, lubricants, and other industrial products from India.",
         "Used Next.js and Tailwind CSS to create a modern, clean user interface.",
         "Designed the layout to clearly showcase the client's product range for international customers.",
         "Focused on performance optimization and cross-device user experience.",
