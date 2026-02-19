@@ -1,3 +1,9 @@
+"use client";
+
+import ScrollReveal from "./ui/ScrollReveal";
+import SpotlightCard from "./ui/SpotlightCard";
+import { motion } from "framer-motion";
+
 export default function Projects() {
   const projects = [
     {
@@ -32,93 +38,105 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2
-          className="text-3xl md:text-4xl font-bold section-heading mb-16"
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
-        >
-          Projects
-        </h2>
+        <ScrollReveal>
+          <h2
+            className="text-3xl md:text-4xl font-bold section-heading mb-16"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Projects
+          </h2>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <div
-              key={i}
-              className="gradient-border-card p-6 md:p-8 group hover:bg-white/[0.03] transition-colors duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="p-3 rounded-lg bg-violet-500/10">
-                  <svg
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                    className="text-violet-400"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2 6a2 2 0 012-2h5l2 2h9a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                    />
-                  </svg>
-                </div>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-500 hover:text-violet-400 transition-colors p-2"
+            <ScrollReveal key={i} delay={i * 0.2} direction={i % 2 === 0 ? "left" : "right"}>
+              <SpotlightCard
+                className="gradient-border-card p-6 md:p-8 group hover:bg-white/[0.03] transition-colors duration-300 h-full"
+                spotlightColor="rgba(124, 58, 237, 0.15)"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <motion.div
+                    className="p-3 rounded-lg bg-violet-500/10"
+                    whileHover={{ rotate: 12, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                   >
                     <svg
-                      width="20"
-                      height="20"
+                      width="24"
+                      height="24"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      strokeWidth={2}
+                      strokeWidth={1.5}
+                      className="text-violet-400"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        d="M2 6a2 2 0 012-2h5l2 2h9a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                       />
                     </svg>
-                  </a>
-                )}
-              </div>
+                  </motion.div>
+                  {project.link && (
+                    <motion.a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-500 hover:text-violet-400 transition-colors p-2"
+                      whileHover={{ scale: 1.2, rotate: -12 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </motion.a>
+                  )}
+                </div>
 
-              <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-violet-300 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-xs text-slate-500 mb-3">{project.period}</p>
-              <p className="text-sm text-slate-400 mb-4 leading-relaxed">
-                {project.description}
-              </p>
+                <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-violet-300 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-xs text-slate-500 mb-3">{project.period}</p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
 
-              <ul className="space-y-2 mb-6">
-                {project.points.map((point, j) => (
-                  <li
-                    key={j}
-                    className="flex items-start gap-2.5 text-sm text-slate-400 leading-relaxed"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-blue-500/60 mt-2 shrink-0" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
+                <ul className="space-y-2 mb-6">
+                  {project.points.map((point, j) => (
+                    <li
+                      key={j}
+                      className="flex items-start gap-2.5 text-sm text-slate-400 leading-relaxed"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-blue-500/60 mt-2 shrink-0" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
 
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <motion.span
+                      key={t}
+                      className="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      {t}
+                    </motion.span>
+                  ))}
+                </div>
+              </SpotlightCard>
+            </ScrollReveal>
           ))}
         </div>
       </div>

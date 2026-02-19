@@ -1,3 +1,8 @@
+"use client";
+
+import ScrollReveal from "./ui/ScrollReveal";
+import SpotlightCard from "./ui/SpotlightCard";
+
 export default function Experience() {
   const experiences = [
     {
@@ -43,74 +48,78 @@ export default function Experience() {
     <section id="experience" className="py-24 px-6 relative">
       <div className="absolute inset-0 grid-pattern opacity-50 pointer-events-none" />
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2
-          className="text-3xl md:text-4xl font-bold section-heading mb-16"
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
-        >
-          Experience
-        </h2>
+        <ScrollReveal>
+          <h2
+            className="text-3xl md:text-4xl font-bold section-heading mb-16"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Experience
+          </h2>
+        </ScrollReveal>
 
         <div className="space-y-8 ml-2">
           {experiences.map((exp, i) => (
-            <div key={i} className="timeline-item">
-              <div className="glass-card rounded-xl p-6 md:p-8">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                  <div>
-                    <h3 className="text-lg md:text-xl font-semibold text-white">
-                      {exp.title}
-                    </h3>
-                    <a
-                      href={exp.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-violet-400 hover:text-violet-300 text-sm mt-1 transition-colors"
-                    >
-                      {exp.company}
-                      <svg
-                        width="12"
-                        height="12"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
+            <ScrollReveal key={i} delay={i * 0.15} direction="left">
+              <div className="timeline-item">
+                <SpotlightCard className="glass-card rounded-xl p-6 md:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                    <div>
+                      <h3 className="text-lg md:text-xl font-semibold text-white">
+                        {exp.title}
+                      </h3>
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-violet-400 hover:text-violet-300 text-sm mt-1 transition-colors"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                  <span className="text-sm text-slate-500 whitespace-nowrap">
-                    {exp.period}
-                  </span>
-                </div>
-
-                <ul className="space-y-2 mb-5">
-                  {exp.points.map((point, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-3 text-sm text-slate-400 leading-relaxed"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-violet-500/60 mt-2 shrink-0" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 text-xs rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20"
-                    >
-                      {t}
+                        {exp.company}
+                        <svg
+                          width="12"
+                          height="12"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                    <span className="text-sm text-slate-500 whitespace-nowrap">
+                      {exp.period}
                     </span>
-                  ))}
-                </div>
+                  </div>
+
+                  <ul className="space-y-2 mb-5">
+                    {exp.points.map((point, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-3 text-sm text-slate-400 leading-relaxed"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-violet-500/60 mt-2 shrink-0" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1 text-xs rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </SpotlightCard>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

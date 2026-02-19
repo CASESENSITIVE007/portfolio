@@ -1,3 +1,8 @@
+"use client";
+
+import ScrollReveal from "./ui/ScrollReveal";
+import SpotlightCard from "./ui/SpotlightCard";
+
 export default function Certifications() {
   const certifications = [
     {
@@ -68,48 +73,56 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2
-          className="text-3xl md:text-4xl font-bold section-heading mb-16"
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
-        >
-          Certifications
-        </h2>
+        <ScrollReveal>
+          <h2
+            className="text-3xl md:text-4xl font-bold section-heading mb-16"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Certifications
+          </h2>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, i) => (
-            <a
-              key={i}
-              href={cert.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card rounded-xl p-6 group cursor-pointer"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-start gap-3">
-                  <div className="p-2.5 rounded-lg bg-white/5 shrink-0 group-hover:bg-violet-500/10 transition-colors">
-                    {cert.icon}
-                  </div>
-                  <h3 className="text-sm font-medium text-white group-hover:text-violet-300 transition-colors leading-relaxed pt-1">
-                    {cert.title}
-                  </h3>
-                </div>
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  className="text-slate-600 group-hover:text-violet-400 transition-colors shrink-0 mt-2"
+            <ScrollReveal key={i} delay={i * 0.15} direction="up">
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <SpotlightCard
+                  className="glass-card rounded-xl p-6 group cursor-pointer h-full"
+                  spotlightColor="rgba(96, 165, 250, 0.12)"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </div>
-            </a>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="p-2.5 rounded-lg bg-white/5 shrink-0 group-hover:bg-violet-500/10 transition-colors">
+                        {cert.icon}
+                      </div>
+                      <h3 className="text-sm font-medium text-white group-hover:text-violet-300 transition-colors leading-relaxed pt-1">
+                        {cert.title}
+                      </h3>
+                    </div>
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      className="text-slate-600 group-hover:text-violet-400 transition-colors shrink-0 mt-2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </div>
+                </SpotlightCard>
+              </a>
+            </ScrollReveal>
           ))}
         </div>
       </div>
